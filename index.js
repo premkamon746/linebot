@@ -36,7 +36,7 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  const echo = { type: 'text', text: "Please send begin with message prefix." }; 
+  let echo = { type: 'text', text: "Please send begin with message prefix." }; 
   if (event.message.text.trim().includes("#solved"))
   {
     
@@ -48,7 +48,7 @@ function handleEvent(event) {
       $botMsg = "not found your TicketID";
     }
     
-    const echo = { type: 'text', text: $botMsg };
+    echo = { type: 'text', text: $botMsg };
   }
 
 
