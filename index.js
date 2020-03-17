@@ -16,6 +16,9 @@ const app = express();
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
+
+let messageMap = "#solved";
+
 app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
@@ -33,8 +36,11 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
+  const echo = { type: 'text', text: "Please send begin with message prefix." }; 
+  if (event.message.text.includes("#solved")){
+    const echo = { type: 'text', text: "Take a few minutes to check. I will reply soon." };
+  }
+
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
