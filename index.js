@@ -39,16 +39,20 @@ function handleEvent(event) {
   let echo = { type: 'text', text: "Please send begin with message prefix." }; 
   if (event.message.text.trim().includes("#solved"))
   {
-    
-    $manMsg = event.message.text.trim().split(' ');
-    $botMsg = "Take a few minutes to check. I will reply soon.";
+
+    let manMsg = event.message.text.trim().split(' ');
+    console.log("debug start----------------");
+    console.log(event.message.text.trim());
+    console.log(manMsg);
+    console.log("debug end----------------");
+    let botMsg = "Take a few minutes to check. I will reply soon.";
     
     if(manMsg[1]==undefined)
     {
-      $botMsg = "not found your TicketID";
+      botMsg = "not found your TicketID";
     }
     
-    echo = { type: 'text', text: $botMsg };
+    echo = { type: 'text', text: botMsg };
   }
 
 
