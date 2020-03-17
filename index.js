@@ -37,8 +37,18 @@ function handleEvent(event) {
   }
 
   const echo = { type: 'text', text: "Please send begin with message prefix." }; 
-  if (event.message.text.includes("#solved")){
-    const echo = { type: 'text', text: "Take a few minutes to check. I will reply soon." };
+  if (event.message.text.trim().includes("#solved"))
+  {
+    
+    $manMsg = event.message.text.trim().split(' ');
+    $botMsg = "Take a few minutes to check. I will reply soon.";
+    
+    if(manMsg[1]==undefined)
+    {
+      $botMsg = "not found your TicketID";
+    }
+    
+    const echo = { type: 'text', text: $botMsg };
   }
 
 
